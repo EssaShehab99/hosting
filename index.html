@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="نظام سحابي يتيح لمؤسسات و شركات الشحن والنقل متابعة كافة الطلبات (بوليصة شحن)، وإدارة السائقين، والشاحنات بـــالإضافـة الـــى إدارة الحسابات والأصول من أي مكان و في أي وقت.">
+  <meta property="og:image" content="icons/Icon-192.png">
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="نظام مسار سمارت">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+
+  <title>نظام مسار سمارت</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+        @keyframes fade {
+            0% {
+                opacity: 1;
+                fill: #fff;
+            }
+
+            50% {
+                opacity: 1;
+                fill: #12457c;
+            }
+
+            100% {
+                opacity: 1;
+                fill: #fff;
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+        body {
+            background-color: #f9b53a;
+        }
+
+        .loading-paper {
+            min-width: 75px;
+            max-width: 75px;
+            border-bottom-right-radius: 39px;
+            border-top-left-radius: 39px;
+            fill: #06CDFF;
+            padding: 5px;
+        }
+
+
+        .loading-container {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            overflow: hidden;
+            font-size: 0;
+            flex-wrap: wrap;
+            width: 200px;
+            height: 200px;
+            align-content: center;
+        }
+
+        .loader--fade .loader-item {
+            animation-name: fade;
+            animation-duration: 1200ms;
+        }
+
+        .loader--fade svg {
+            min-width: 200px !important;
+            min-height: 200px !important;
+            height: -webkit-fill-available;
+        }
+
+        .loader-item {
+            /* width: 50px;
+            height: 50px;
+            margin-left: 2px; */
+            /* background-color: rgba(61, 92, 126, 0.7); */
+            /* color: rgba(61, 92, 126, 0.7); */
+            animation-duration: 2000ms;
+            animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+            animation-iteration-count: infinite;
+        }
+
+        .loader-item:nth-child(1) {
+            animation-delay: 100ms;
+            /* transform: rotateX(180deg); */
+        }
+
+        .loader-item:nth-child(2) {
+            animation-delay: 200ms;
+        }
+
+        .loader-item:nth-child(3) {
+            animation-delay: 400ms;
+            /* transform: rotate(-180deg); */
+        }
+
+        .loader-item:nth-child(4) {
+            animation-delay: 300ms;
+            /* transform: rotateY(180deg); */
+        }
+
+        .loader-item:nth-child(5) {
+            animation-delay: 500ms;
+        }
+
+        .loader-item:nth-child(6) {
+            animation-delay: 600ms;
+        }
+    </style>
+</head>
+<body>
+<div class="loading-container">
+  <div class="loader loader--fade">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343.66 390.25">
+      <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+          <polygon class="loader-item" points="0 104.46 0 295.12 164.19 390.25 164.19 199.17 0 104.46"
+                   fill="#fff" />
+          <polygon class="loader-item"
+                   points="279.18 61.9 229.1 33.22 171.14 0 6.94 94.3 64.28 127.41 113.66 155.87 171.14 189.01 335.74 94.3 279.18 61.9"
+                   fill="#fff" />
+          <polygon class="loader-item"
+                   points="179.05 199.17 179.05 390.25 343.66 295.12 343.66 104.46 179.05 199.17"
+                   fill="#12457c" />
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script>
+    var serviceWorkerVersion = '20658633';
+    var scriptLoaded = false;
+    function loadMainDartJs() {
+      if (scriptLoaded) {
+        return;
+      }
+      scriptLoaded = true;
+      var scriptTag = document.createElement('script');
+      scriptTag.src = 'main.dart.js';
+      scriptTag.type = 'application/javascript';
+      document.body.append(scriptTag);
+    }
+
+    if ('serviceWorker' in navigator) {
+      // Service workers are supported. Use them.
+      window.addEventListener('load', function () {
+        // Wait for registration to finish before dropping the <script> tag.
+        // Otherwise, the browser will load the script multiple times,
+        // potentially different versions.
+        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+        navigator.serviceWorker.register(serviceWorkerUrl)
+          .then((reg) => {
+            function waitForActivation(serviceWorker) {
+              serviceWorker.addEventListener('statechange', () => {
+                if (serviceWorker.state == 'activated') {
+                  console.log('Installed new service worker.');
+                  loadMainDartJs();
+                }
+              });
+            }
+            if (!reg.active && (reg.installing || reg.waiting)) {
+              // No active web worker and we have installed or are installing
+              // one for the first time. Simply wait for it to activate.
+              waitForActivation(reg.installing || reg.waiting);
+            } else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
+              // When the app updates the serviceWorkerVersion changes, so we
+              // need to ask the service worker to update.
+              console.log('New service worker available.');
+              reg.update();
+              waitForActivation(reg.installing);
+            } else {
+              // Existing service worker is still good.
+              console.log('Loading app from service worker.');
+              loadMainDartJs();
+            }
+          });
+
+        // If service worker doesn't succeed in a reasonable amount of time,
+        // fallback to plaint <script> tag.
+        setTimeout(() => {
+          if (!scriptLoaded) {
+            console.warn(
+              'Failed to load app from service worker. Falling back to plain <script> tag.',
+            );
+            loadMainDartJs();
+          }
+        }, 4000);
+      });
+    } else {
+      // Service workers not supported. Just drop the <script> tag.
+      loadMainDartJs();
+    }
+  </script>
+</body>
+</html>
